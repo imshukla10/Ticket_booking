@@ -1,7 +1,19 @@
 const express = require('express')
-const app = express()
+const bodyParser = require('body-parser')
 
 
-app.listen(3000,(req,res)=>{
-    console.log("Sever started on port 3000")
-})
+const {PORT} = require('./config/serverConfig')
+
+
+const setupAndStartServer = () =>{
+    const app = express()
+    
+    app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({extended:true}))
+
+    app.listen(PORT,(req,res)=>{
+        console.log(`Server started on ${PORT}`)
+    })
+}
+
+setupAndStartServer()
