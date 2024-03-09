@@ -27,7 +27,7 @@ class CityRepository{
             const city = await City.findByPk(cityId)
             return city
         } catch(error){
-            throw {error}
+            throw {error} 
         }
     }
 
