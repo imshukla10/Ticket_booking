@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 
 
 const { PORT } = require('./config/serverConfig.js')
-const CityRepository = require('./repository/city-repository.js')
+const ApiRoutes = require('./routes/index.js')
 
 
 const setupAndStartServer = () =>{
@@ -11,11 +11,10 @@ const setupAndStartServer = () =>{
     
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended:true}))
+    app.use('/api',ApiRoutes)
 
     app.listen(PORT,(req,res)=>{
         console.log(`Server started on ${PORT}`)
-        const repo = new CityRepository()
-        repo.createCity({name:" Delhi"})
     })
 }
 
