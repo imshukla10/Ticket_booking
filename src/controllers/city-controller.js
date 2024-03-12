@@ -22,6 +22,27 @@ const create = async (req,res)=>{
     }
 }
 
+const createMultiple = async (req,res)=>{
+    try {
+        const city = await cityService.createMultipleCity(req.body)
+        return res.status(201).json({
+            data:city,
+            success:true,
+            message:"Successfully created city",
+            err:{}
+        })        
+    } catch (error) {
+        console.log("error in controller")
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:"Not able to create a city",
+            err:error
+        })
+    }
+}
+
+
 const destroy = async (req,res)=>{
     try {
         const response = await cityService.deleteCity(req.params.id)
@@ -107,5 +128,6 @@ module.exports = {
     destroy,
     get,
     update,
-    getAll
+    getAll,
+    createMultiple
 }

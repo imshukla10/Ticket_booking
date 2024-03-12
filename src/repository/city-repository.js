@@ -12,6 +12,15 @@ class CityRepository{
         }
     }
 
+    async createMultipleCity(data){
+        try {
+            const cities = await City.bulkCreate(data.map(item => ({ name: item.name })));
+            return cities;
+        } catch (error) {
+            throw {error}
+        }
+    }
+
     async updateCity(cityId,data){
         try{
             const city = await City.findByPk(cityId);
