@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-
+const db = require('./models/index.js');
 const { PORT } = require('./config/serverConfig.js')
 const ApiRoutes = require('./routes/index.js')
 
@@ -15,6 +15,9 @@ const setupAndStartServer = () =>{
 
     app.listen(PORT,(req,res)=>{
         console.log(`Server started on ${PORT}`)
+        if(process.env.SYNC_DC){
+            db.sequelize.sync({alter:true})
+        }
     })
 }
 
