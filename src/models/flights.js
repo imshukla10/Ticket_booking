@@ -14,12 +14,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Flights.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     flightNumber: {
       type:DataTypes.STRING,
       allowNull:false,
       unique:true
     },
-    airlaneId: {
+    airplaneId: {
       type:DataTypes.INTEGER,
       allowNull:false
     },

@@ -32,7 +32,7 @@ const createMultiple = async (req,res)=>{
             err:{}
         })        
     } catch (error) {
-        console.log("error in controller")
+        console.log("error in city controller")
         return res.status(500).json({
             data:{},
             success:false,
