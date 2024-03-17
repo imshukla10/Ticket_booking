@@ -15,10 +15,7 @@ router.put('/city/:id',CityController.update);
 
 
 //airport routes
-router.post('/airport',AirportController.create);
-router.get('/airport/:id',AirportController.get);
-router.put('/airport/:id',AirportController.update);
-router.delete('/airport/:id',AirportController.destroy);
+router.post('/airports',AirportController.create);
 
 
 //flight routes
